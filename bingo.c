@@ -4,54 +4,27 @@
 
 
 
-void fuerzabruta(int n) {
-	int a,b,c,d,e,f,g,h;
-  	for(a=1;a<=31;a++)
-	{
- 	 	for(b=a+1;b<=32;b++)
-  		{ 
-    		for(c=b+1;c<=33;c++)
-    		{
-       			for(d=c+1;d<=34;d++)
-       			{
-         			for(e=d+1;e<=35;e++)
-         			{
-           				for(f=e+1;f<=36;f++)
-            			{
-            				for(g=f+1;g<=37;g++)
-            				{
-	            				for(h=g+1;h<=38;h++)
-	            				{
-             						printf("%d-%d-%d-%d-%d-%d-%d-%d\n",a,b,c,d,f,e,g,h);
-	           					}	
-           					}
-           				}
-     				}
-       			}
-     		}  
-   		} 
-	}
-}
+
 
 int bingo_combinacion(int n){
-	int z,a;
+	int a,b,c,d,e,f,g,h;
 	if(n>=8)
 	{
-		for(a=1;a<=13;a++)
+		for(a=1;a<=n-7;a++)
 		{
-			for(b=a+1;b<=14;b++)
+			for(b=a+1;b<=n-6;b++)
 			{
-				for(c=b+1;c<=15;c++)
+				for(c=b+1;c<=n-5;c++)
 				{
-					for(d=c+1;d<=16;d++)
+					for(d=c+1;d<=n-4;d++)
 					{
-						for(e=d+1;e<=17;e++)
+						for(e=d+1;e<=n-3;e++)
 						{
-							for(f=e+1;f<=18;f++)
+							for(f=e+1;f<=n-2;f++)
 							{
-								for(g=f+1;g<=19;g++)
+								for(g=f+1;g<=n-1;g++)
 								{
-									for(h=g+1;h<=20;h++)
+									for(h=g+1;h<=n;h++)
 									{		
 										printf("%d-%d-%d-%d-%d-%d-%d-%d-\n", a,b,c,d,e,f,g,h);
 									}
@@ -95,7 +68,7 @@ int main(int argc, char* argv[]) {
 					conjunto = (int*)malloc(n*sizeof(int));	
 				}
 
-				fuerzabruta(n);
+				bingo_combinacion(n);
 				fclose(fileIN);	
 				fclose(fileOUT);
 				exit(EXIT_SUCCESS);
