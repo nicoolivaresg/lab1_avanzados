@@ -3,10 +3,58 @@
 #include <string.h>
 
 
+void imprimirCombinacionEnArchivo(FILE * file, int * a){
+	fprintf(file,"%d-%d-%d-%d-%d-%d-%d-%d\n", a[0],a[1],a[2],a[3],a[4],a[5],a[6],a[7]);
+}
 
+int bingo_combinacion_2(FILE * file,int n){
+	int a,b,c,d,e,f,g,h,z,i;
+	if(n>=8)
+	{	
+		for(z=n;z<=20;z++)
+		{	
+			fprintf(file,"Conjunto:\n[");
+			for(i=1;i<=z;i++){
+				if(i==z){
+					fprintf(file,"%d]", i);
+				}else{
+					fprintf(file,"%d-", i);
+				}
+			}
+			fprintf(file, "\nSubconjuntos:\n");
+			for(a=1;a<=z-7;a++)
+			{
+				for(b=a+1;b<=z-6;b++)
+				{
+					for(c=b+1;c<=z-5;c++)
+					{
+						for(d=c+1;d<=z-4;d++)
+						{
+							for(e=d+1;e<=z-3;e++)
+							{
+								for(f=e+1;f<=z-2;f++)
+								{
+									for(g=f+1;g<=z-1;g++)
+									{
+										for(h=g+1;h<=z;h++)
+										{		
+											fprintf(file,"[%d-%d-%d-%d-%d-%d-%d-%d]\n", a,b,c,d,e,f,g,h);
+										}
+									}	
+								}	
+							}	
+						}	
+					}		
+				}	
+			}	
+		}
+		return 0;
+	}else{
+		return -1;
+	}
+}
 
-
-int bingo_combinacion(int n){
+int bingo_combinacion_1(FILE * file,int n){
 	int a,b,c,d,e,f,g,h;
 	if(n>=8)
 	{
@@ -26,7 +74,7 @@ int bingo_combinacion(int n){
 								{
 									for(h=g+1;h<=n;h++)
 									{		
-										printf("%d-%d-%d-%d-%d-%d-%d-%d-\n", a,b,c,d,e,f,g,h);
+										fprintf(file,"%d-%d-%d-%d-%d-%d-%d-%d\n", a,b,c,d,e,f,g,h);
 									}
 								}	
 							}	
@@ -35,6 +83,24 @@ int bingo_combinacion(int n){
 				}		
 			}	
 		}	
+		return 0;
+	}else{
+		return -1;
+	}
+}
+
+int bingo_combinacion(FILE * file,int n){
+	int z,i,j;
+	int * a = (int*)malloc(n*sizeof(int));
+	if(n>=8)
+	{
+		for(i=0;i<8;i++){
+			a[i] = i+1;
+		}
+
+		
+		imprimirCombinacionEnArchivo(file,a);
+					
 		return 0;
 	}else{
 		return -1;
@@ -68,7 +134,7 @@ int main(int argc, char* argv[]) {
 					conjunto = (int*)malloc(n*sizeof(int));	
 				}
 
-				bingo_combinacion(n);
+				bingo_combinacion_2(fileOUT,n);
 				fclose(fileIN);	
 				fclose(fileOUT);
 				exit(EXIT_SUCCESS);
