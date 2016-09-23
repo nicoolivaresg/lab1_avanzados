@@ -1,0 +1,3 @@
+Ejecutar en consola Linux:
+
+make -f MakeFile
